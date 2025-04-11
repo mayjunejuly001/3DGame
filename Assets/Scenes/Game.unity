@@ -158,6 +158,7 @@ MonoBehaviour:
   rows: 10
   cols: 10
   spacing: 1.1
+  obstaclesData: {fileID: 11400000, guid: 139cacd2a26e2ec4b866263e409e86c1, type: 2}
 --- !u!4 &388596633
 Transform:
   m_ObjectHideFlags: 0

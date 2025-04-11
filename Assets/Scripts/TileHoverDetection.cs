@@ -23,7 +23,7 @@ public class TileHoverDetection : MonoBehaviour
             {
                 if (tile != lastHoveredTile)
                 {
-                    tileInfoText.text = $"Tile Info : ({tile.row}, {tile.column})";
+                    tileInfoText.text = $"Tile Info : ({tile.Cell.position.x}, {tile.Cell.position.y})";
                     lastHoveredTile = tile;
                 }
             }

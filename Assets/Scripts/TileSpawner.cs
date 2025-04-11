@@ -9,6 +9,9 @@ public class TileSpawner : MonoBehaviour
     public int rows = 10;
     public int cols = 10;
     public float spacing = 1f;
+    public ObstacleData obstaclesData;
+
+    private Dictionary<Vector2Int, TileInfo> tilesDictionary = new Dictionary<Vector2Int, TileInfo>();
 
     private void Start()
     {
@@ -17,6 +20,7 @@ public class TileSpawner : MonoBehaviour
 
     private void spawnGrid()
     {
+        tilesDictionary.Clear();
         for (int x = 0; x < rows; x++)
         {
             for( int z  = 0; z < cols; z++)
@@ -28,15 +32,13 @@ public class TileSpawner : MonoBehaviour
                 TileInfo tileInfo = tile.GetComponent<TileInfo>();
                 if (tileInfo != null)
                 {
-                    tileInfo.row = x;
-                    tileInfo.column = z;
-
+                    tileInfo.Init(new Vector2Int(x, z), !obstaclesData.IsObstacle(x, z));
+                    tilesDictionary[new Vector2Int(x, z)] = tileInfo;
                 }
                 else
                 {
                     Debug.Log("No information found");
                 }
-
             }
         }
     }
